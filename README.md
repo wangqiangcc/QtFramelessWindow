@@ -5,6 +5,10 @@ Custom frameless window,dialog,messagebox  Library / 自定义无边框窗体，
 GitHub: https://github.com/FlyWM
 CSDN: https://blog.csdn.net/a844651990
 
+
+
+![image](https://raw.githubusercontent.com/dnybz/QtFramelessWindow/master/preview_1.png)
+ 
 使用方法：
 
 ```c++
