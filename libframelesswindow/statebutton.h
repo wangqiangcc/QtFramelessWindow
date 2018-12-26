@@ -65,11 +65,5 @@ public:
     TextButton(QWidget *parent = 0);
     ~TextButton();
 };
-//
-class CommonButton : public StateButton
-{
-public:
-    explicit CommonButton(QWidget *parent = 0);
-};
 
 #endif //

@@ -194,19 +194,3 @@ TextButton::~TextButton()
 {
 
 }
-
-//////////////////////////////////////////////////////////////////////////
-
-#define BACKGROUND_STYLE_SHEET \
-    "QPushButton { background:transparent; border-image:url(:/images/btn_normal.png) 3 3; border-width: 3 3;}"\
-    "QPushButton:hover, QPushButton:focus{border-image:url(:/images/btn_hover.png) 3 3; border-width: 3 3; }"\
-    "QPushButton:pressed{ border-image:url(:/images/btn_down.png) 3 3; border-width: 3 3;}"\
-    "QPushButton:disabled{ border-image:url(:/images/btn_disabled.png) 3 3; border-width: 3 3;}"
-
-
-CommonButton::CommonButton(QWidget *parent /*= 0*/)
-    :StateButton(parent)
-{
-    setMinimumSize(QSize(75, 26));
-    setStyleSheet(BACKGROUND_STYLE_SHEET);
-}
