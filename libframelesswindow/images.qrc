@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/titlebar/close.png</file>
+        <file>images/titlebar/max.png</file>
+        <file>images/titlebar/menu.png</file>
+        <file>images/titlebar/min.png</file>
+        <file>images/titlebar/restore.png</file>
+        <file>images/background/client-shadow.png</file>
+        <file>images/msgbox/msg-error-48x48.png</file>
+        <file>images/msgbox/msg-info-48x48.png</file>
+        <file>images/msgbox/msg-question-48x48.png</file>
+        <file>images/msgbox/msg-success-48x48.png</file>
+        <file>images/msgbox/msg-warning-48x48.png</file>
+    </qresource>
+</RCC>
