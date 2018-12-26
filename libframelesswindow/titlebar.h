@@ -34,7 +34,7 @@ protected:
      * @param event
      *  QMouseEvent *
      */
-    virtual void mouseDoubleClickEvent(QMouseEvent *event);   
+    virtual void mouseDoubleClickEvent(QMouseEvent *event);
 
     // 进行鼠界面的拖动
 //    virtual void mousePressEvent(QMouseEvent *event);

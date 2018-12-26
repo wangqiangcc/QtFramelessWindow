@@ -39,8 +39,8 @@ FramelessDialog::FramelessDialog(QWidget *parent)
 }
 
 FramelessMessageBox::FramelessMessageBox(QWidget *parent, const QString &title, const QString &text,
-                       QMessageBox::StandardButtons buttons,
-                       QMessageBox::StandardButton defaultButton)
+        QMessageBox::StandardButtons buttons,
+        QMessageBox::StandardButton defaultButton)
     : FramelessDialog(parent)
 {
     setObjectName("framelessMessagBox");
@@ -55,27 +55,27 @@ FramelessMessageBox::FramelessMessageBox(QWidget *parent, const QString &title, 
     setDefaultButton(defaultButton);
 
     QPushButton *pOkButton = m_pButtonBox->button(QDialogButtonBox::Ok);
-    if(pOkButton != Q_NULLPTR){
+    if(pOkButton != Q_NULLPTR) {
         pOkButton->setObjectName("pOkButton");
     }
 
     QPushButton *pYesButton = m_pButtonBox->button(QDialogButtonBox::Yes);
-    if(pYesButton != Q_NULLPTR){
+    if(pYesButton != Q_NULLPTR) {
         pYesButton->setObjectName("pYesButton");
     }
 
     QPushButton *pNoButton = m_pButtonBox->button(QDialogButtonBox::No);
-    if(pNoButton != Q_NULLPTR){
+    if(pNoButton != Q_NULLPTR) {
         pNoButton->setObjectName("pNoButton");
     }
 
     QPushButton *pCloseButton = m_pButtonBox->button(QDialogButtonBox::Close);
-    if(pCloseButton != Q_NULLPTR){
+    if(pCloseButton != Q_NULLPTR) {
         pCloseButton->setObjectName("pCloseButton");
     }
 
     QPushButton *pCancelButton = m_pButtonBox->button(QDialogButtonBox::Cancel);
-    if(pCancelButton != Q_NULLPTR){
+    if(pCancelButton != Q_NULLPTR) {
         pCancelButton->setObjectName("pCancelButton");
     }
 
@@ -134,7 +134,7 @@ QMessageBox::StandardButton FramelessMessageBox::standardButton(QAbstractButton 
 
 void FramelessMessageBox::setDefaultButton(QPushButton *button)
 {
-    if (!m_pButtonBox->buttons().contains(button))
+    if(!m_pButtonBox->buttons().contains(button))
         return;
 
     m_pDefaultButton = button;
@@ -177,16 +177,16 @@ void FramelessMessageBox::addWidget(QWidget *pWidget)
 }
 
 QMessageBox::StandardButton FramelessMessageBox::showMessageBox(QWidget *parent,
-                                                                const QString &title,
-                                                                const QString &text,
-                                                                QMessageBox::StandardButtons buttons,
-                                                                IconType messageType,
-                                                                QMessageBox::StandardButton defaultButton)
+        const QString &title,
+        const QString &text,
+        QMessageBox::StandardButtons buttons,
+        IconType messageType,
+        QMessageBox::StandardButton defaultButton)
 {
     FramelessMessageBox msgBox(parent, title, text, buttons, defaultButton);
     msgBox.hideTitleBarIcon();
 
-    switch (messageType) {
+    switch(messageType) {
     case MSG_NOICON:
         msgBox.hideInfoIcon();
         break;
@@ -209,94 +209,94 @@ QMessageBox::StandardButton FramelessMessageBox::showMessageBox(QWidget *parent,
         break;
     }
 
-    if (msgBox.exec() == -1)
+    if(msgBox.exec() == -1)
         return QMessageBox::Cancel;
     return msgBox.standardButton(msgBox.clickedButton());
 }
 
 QMessageBox::StandardButton FramelessMessageBox::showInformation(QWidget *parent,
-                                                                 const QString &title,
-                                                                 const QString &text,
-                                                                 QMessageBox::StandardButtons buttons,
-                                                                 QMessageBox::StandardButton defaultButton)
+        const QString &title,
+        const QString &text,
+        QMessageBox::StandardButtons buttons,
+        QMessageBox::StandardButton defaultButton)
 {
     FramelessMessageBox msgBox(parent, title, text, buttons, defaultButton);
     msgBox.setIcon(":/images/msgbox/msg-info-48x48.png");
-    if (msgBox.exec() == -1)
+    if(msgBox.exec() == -1)
         return QMessageBox::Cancel;
     return msgBox.standardButton(msgBox.clickedButton());
 }
 
 QMessageBox::StandardButton FramelessMessageBox::showError(QWidget *parent,
-                                                           const QString &title,
-                                                           const QString &text,
-                                                           QMessageBox::StandardButtons buttons,
-                                                           QMessageBox::StandardButton defaultButton)
+        const QString &title,
+        const QString &text,
+        QMessageBox::StandardButtons buttons,
+        QMessageBox::StandardButton defaultButton)
 {
     FramelessMessageBox msgBox(parent, title, text, buttons, defaultButton);
     msgBox.setIcon(":/images/msgbox/msg-error-48x48.png");
-    if (msgBox.exec() == -1)
+    if(msgBox.exec() == -1)
         return QMessageBox::Cancel;
     return msgBox.standardButton(msgBox.clickedButton());
 }
 
 QMessageBox::StandardButton FramelessMessageBox::showSuccess(QWidget *parent,
-                                                             const QString &title,
-                                                             const QString &text,
-                                                             QMessageBox::StandardButtons buttons,
-                                                             QMessageBox::StandardButton defaultButton)
+        const QString &title,
+        const QString &text,
+        QMessageBox::StandardButtons buttons,
+        QMessageBox::StandardButton defaultButton)
 {
     FramelessMessageBox msgBox(parent, title, text, buttons, defaultButton);
     msgBox.setIcon(":/images/msgbox/msg-success-48x48.png");
-    if (msgBox.exec() == -1)
+    if(msgBox.exec() == -1)
         return QMessageBox::Cancel;
     return msgBox.standardButton(msgBox.clickedButton());
 }
 
 QMessageBox::StandardButton FramelessMessageBox::showQuestion(QWidget *parent,
-                                                              const QString &title,
-                                                              const QString &text,
-                                                              QMessageBox::StandardButtons buttons,
-                                                              QMessageBox::StandardButton defaultButton)
+        const QString &title,
+        const QString &text,
+        QMessageBox::StandardButtons buttons,
+        QMessageBox::StandardButton defaultButton)
 {
     FramelessMessageBox msgBox(parent, title, text, buttons, defaultButton);
     msgBox.setIcon(":/images/msgbox/msg-question-48x48.png");
-    if (msgBox.exec() == -1)
+    if(msgBox.exec() == -1)
         return QMessageBox::Cancel;
     return msgBox.standardButton(msgBox.clickedButton());
 }
 
 QMessageBox::StandardButton FramelessMessageBox::showWarning(QWidget *parent,
-                                                             const QString &title,
-                                                             const QString &text,
-                                                             QMessageBox::StandardButtons buttons,
-                                                             QMessageBox::StandardButton defaultButton)
+        const QString &title,
+        const QString &text,
+        QMessageBox::StandardButtons buttons,
+        QMessageBox::StandardButton defaultButton)
 {
     FramelessMessageBox msgBox(parent, title, text, buttons, defaultButton);
     msgBox.setIcon(":/images/msgbox/msg-warning-48x48.png");
-    if (msgBox.exec() == -1)
+    if(msgBox.exec() == -1)
         return QMessageBox::Cancel;
     return msgBox.standardButton(msgBox.clickedButton());
 }
 
 QMessageBox::StandardButton FramelessMessageBox::showCritical(QWidget *parent,
-                                                              const QString &title,
-                                                              const QString &text,
-                                                              QMessageBox::StandardButtons buttons,
-                                                              QMessageBox::StandardButton defaultButton)
+        const QString &title,
+        const QString &text,
+        QMessageBox::StandardButtons buttons,
+        QMessageBox::StandardButton defaultButton)
 {
     FramelessMessageBox msgBox(parent, title, text, buttons, defaultButton);
     msgBox.setIcon(":/images/msgbox/msg-warning-48x48.png");
-    if (msgBox.exec() == -1)
+    if(msgBox.exec() == -1)
         return QMessageBox::Cancel;
     return msgBox.standardButton(msgBox.clickedButton());
 }
 
 QMessageBox::StandardButton FramelessMessageBox::showCheckBoxQuestion(QWidget *parent,
-                                                                      const QString &title,
-                                                                      const QString &text,
-                                                                      QMessageBox::StandardButtons buttons,
-                                                                      QMessageBox::StandardButton defaultButton)
+        const QString &title,
+        const QString &text,
+        QMessageBox::StandardButtons buttons,
+        QMessageBox::StandardButton defaultButton)
 {
     FramelessMessageBox msgBox(parent, title, text, buttons, defaultButton);
     msgBox.setIcon(":/images/msgbox/msg-question-48x48.png");
@@ -304,12 +304,11 @@ QMessageBox::StandardButton FramelessMessageBox::showCheckBoxQuestion(QWidget *p
     QCheckBox *pCheckBox = new QCheckBox(&msgBox);
     pCheckBox->setText(text);
     msgBox.addWidget(pCheckBox);
-    if (msgBox.exec() == -1)
+    if(msgBox.exec() == -1)
         return QMessageBox::Cancel;
 
     QMessageBox::StandardButton standardButton = msgBox.standardButton(msgBox.clickedButton());
-    if (standardButton == QMessageBox::Yes)
-    {
+    if(standardButton == QMessageBox::Yes) {
         return pCheckBox->isChecked() ? QMessageBox::Yes : QMessageBox::No;
     }
     return QMessageBox::Cancel;
@@ -317,8 +316,7 @@ QMessageBox::StandardButton FramelessMessageBox::showCheckBoxQuestion(QWidget *p
 
 void FramelessMessageBox::changeEvent(QEvent *event)
 {
-    switch (event->type())
-    {
+    switch(event->type()) {
     case QEvent::LanguageChange:
         translateUI();
         break;
@@ -337,19 +335,19 @@ void FramelessMessageBox::onButtonClicked(QAbstractButton *button)
 void FramelessMessageBox::translateUI()
 {
     QPushButton *pYesButton = m_pButtonBox->button(QDialogButtonBox::Yes);
-    if (pYesButton != NULL)
+    if(pYesButton != NULL)
         pYesButton->setText(tr("Yes"));
 
     QPushButton *pNoButton = m_pButtonBox->button(QDialogButtonBox::No);
-    if (pNoButton != NULL)
+    if(pNoButton != NULL)
         pNoButton->setText(tr("No"));
 
     QPushButton *pOkButton = m_pButtonBox->button(QDialogButtonBox::Ok);
-    if (pOkButton != NULL)
+    if(pOkButton != NULL)
         pOkButton->setText(tr("Ok"));
 
     QPushButton *pCancelButton = m_pButtonBox->button(QDialogButtonBox::Cancel);
-    if (pCancelButton != NULL)
+    if(pCancelButton != NULL)
         pCancelButton->setText(tr("Cancel"));
 }
 

@@ -38,7 +38,8 @@ public:
         , m_pCentralWdiget(new QWidget(this))
         , m_clientDrawType(kTopLeftToBottomRight)
         , m_redrawPixmap(true)
-        , m_drawedPixmap(Q_NULLPTR) {
+        , m_drawedPixmap(Q_NULLPTR)
+    {
 
         resize(800, 600);
         setWindowTitle("FramelessWindow");
@@ -79,7 +80,8 @@ public:
         setRubberBandOnResize(false);
     }
 
-    ~WidgetShadow() {
+    ~WidgetShadow()
+    {
         qDeleteAll(m_alphaCache);
         m_alphaCache.clear();
 
@@ -99,7 +101,8 @@ public:
      * @note 设置QSS样式文件
      * @param file
      */
-    void setStyleSheetFile(const QString &file) {
+    void setStyleSheetFile(const QString &file)
+    {
         QFile qss(file);
         qss.open(QFile::ReadOnly);
         this->setStyleSheet(qss.readAll());
@@ -112,7 +115,8 @@ public:
      * @param h
      * @note 标题栏的高度,默认是25
      */
-    void setTitleHeight(int h = 25) {
+    void setTitleHeight(int h = 25)
+    {
         m_pHelper->setTitleHeight(h);
     }
 
@@ -121,7 +125,8 @@ public:
      * @note 设置窗口是否可移动，默认可移动
      * @param movable
      */
-    void setWidgetMovalbe(bool movable = true) {
+    void setWidgetMovalbe(bool movable = true)
+    {
         m_pHelper->setWidgetMovable(movable);
     }
 
@@ -130,7 +135,8 @@ public:
      * @note 设置窗口是否可缩放，默认是可以进行缩放
      * @param resizable
      */
-    void setWidgetResizable(bool resizable = true) {
+    void setWidgetResizable(bool resizable = true)
+    {
         m_pHelper->setWidgetResizable(resizable);
     }
 
@@ -139,7 +145,8 @@ public:
      * @note 设置窗口标题栏最小化按钮是否可见
      * @param vislble
      */
-    void setMinimumVisible(bool vislble = true) {
+    void setMinimumVisible(bool vislble = true)
+    {
         m_pTitleBar->setMinimumVisible(vislble);
     }
 
@@ -148,7 +155,8 @@ public:
      * @note 设置窗口标题栏最大化或还原按钮是否可见
      * @param visible
      */
-    void setMaximumVisible(bool visible = true) {
+    void setMaximumVisible(bool visible = true)
+    {
         m_pTitleBar->setMaximumVisible(visible);
     }
 
@@ -157,7 +165,8 @@ public:
      * @note 设置窗口缩放时橡皮筋是否可移动，默认是可移动
      * @param rubber
      */
-    void setRubberBandOnMove(bool move = true) {
+    void setRubberBandOnMove(bool move = true)
+    {
         m_pHelper->setRubberBandOnMove(move);
     }
 
@@ -166,7 +175,8 @@ public:
      * @note 设置窗口缩放时橡皮筋是否可缩放，默认可缩放
      * @param resize
      */
-    void setRubberBandOnResize(bool resize = true) {
+    void setRubberBandOnResize(bool resize = true)
+    {
         m_pHelper->setRubberBandOnResize(resize);
     }
 
@@ -176,7 +186,8 @@ public:
      * @param w
      *  QWidget *
      */
-    void setCentralWidget(QWidget *w) {
+    void setCentralWidget(QWidget *w)
+    {
         m_pCentralWdiget->deleteLater();
         m_pCentralWdiget = w;
         m_pFrameLessWindowLayout->addWidget(w, 1);
@@ -188,7 +199,8 @@ public:
      * @param image
      * @note 设置边框图片或阴影
      */
-    void setBorderImage(const QString &image, const QMargins& border = {8,8,8,8}, const QMargins& margin = {6,6,6,6}) {
+    void setBorderImage(const QString &image, const QMargins& border = {8,8,8,8}, const QMargins& margin = {6,6,6,6})
+    {
         m_borderImage.setPixmap(image);
         m_borderImage.setBorder(border);
         m_borderImage.setMargin(margin);
@@ -200,7 +212,8 @@ public:
      * @param file
      * @note 设置窗口背景片
      */
-    void setClientImage(const QString &image) {
+    void setClientImage(const QString &image)
+    {
         m_clientPixmap.load(image);
         update();
     }
@@ -210,7 +223,8 @@ public:
      * @param color
      * @note 设置背景颜色
      */
-    void setClientColor(const QColor &color) {
+    void setClientColor(const QColor &color)
+    {
         //画一个1*1大小的纯色图片
         QPixmap pixmap(1,1);       //作为绘图设备
         QPainter painter(&pixmap); //创建一直画笔
@@ -225,14 +239,21 @@ public:
      * @note 客户区背景绘制方式
      * @return
      */
-    inline ClientDrawType clientDrawType() const { return m_clientDrawType; }
-    void setClientDrawType(ClientDrawType type) { m_clientDrawType = type; }
+    inline ClientDrawType clientDrawType() const
+    {
+        return m_clientDrawType;
+    }
+    void setClientDrawType(ClientDrawType type)
+    {
+        m_clientDrawType = type;
+    }
 
     /**
      * @brief hideTitleBar
      * @note 不显示标题栏
      */
-    void hideTitleBar() {
+    void hideTitleBar()
+    {
         m_pFrameLessWindowLayout->removeWidget(m_pTitleBar);
         m_pTitleBar->deleteLater();
         m_pTitleBar = Q_NULLPTR;
@@ -242,7 +263,8 @@ public:
      * @brief hideTitleBarIcon
      * @note 隐藏标题栏icon
      */
-    void hideTitleBarIcon() {
+    void hideTitleBarIcon()
+    {
         m_pTitleBar->hideTitleIcon();
     }
 
@@ -250,7 +272,8 @@ public:
      * @brief 除去边框后的客户区rect
      * @return
      */
-    QRect clientRect() const {
+    QRect clientRect() const
+    {
         QRect clientRect(rect());
         if(!isMaximized()) {
             const QMargins& m = m_borderImage.margin();
@@ -266,7 +289,8 @@ public:
      * @param rect
      * @param img
      */
-    void drawTopLeft(QPainter *painter, const QRect& rect, const QPixmap& pixmap) {
+    void drawTopLeft(QPainter *painter, const QRect& rect, const QPixmap& pixmap)
+    {
         //图片比要画的区域大，剪辑
         int width = qMin(pixmap.width(), rect.width());
         int height = qMin(pixmap.height(), rect.height());
@@ -301,7 +325,8 @@ public:
      * @param rect
      * @param img
      */
-    void drawTopRight(QPainter *painter, const QRect& rect, const QPixmap& pixmap) {
+    void drawTopRight(QPainter *painter, const QRect& rect, const QPixmap& pixmap)
+    {
         int width = qMin(pixmap.width(), rect.width());
         int height = qMin(rect.height(), pixmap.height());
 
@@ -336,7 +361,8 @@ public:
     }
 
 protected:
-    virtual void resizeEvent(QResizeEvent *event) {
+    virtual void resizeEvent(QResizeEvent *event)
+    {
         if(event->size() == event->oldSize()) {
             return;
         }
@@ -346,7 +372,7 @@ protected:
         //判断是否最大化
         //这里没有使用 isMaximized因为有时候不准确
         if(QApplication::desktop()->availableGeometry().width() == geometry().width() && \
-                QApplication::desktop()->availableGeometry().height() == geometry().height()) {
+           QApplication::desktop()->availableGeometry().height() == geometry().height()) {
             //无圆角,并禁止改变窗口大小
             this->clearMask();
             //最大化后，无边框无边距
@@ -380,7 +406,8 @@ protected:
 #endif
     }
 
-    virtual void paintEvent(QPaintEvent *event) {
+    virtual void paintEvent(QPaintEvent *event)
+    {
         if(m_redrawPixmap || !m_drawedPixmap) {
             m_redrawPixmap = false;
             qDeleteAll(m_alphaCache);

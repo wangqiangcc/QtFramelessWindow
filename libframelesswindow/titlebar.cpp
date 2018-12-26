@@ -70,12 +70,12 @@ TitleBar::~TitleBar()
 
 void TitleBar::setMinimumVisible(bool minimum)
 {
-    if (!minimum)  m_pMinimizeButton->hide();
+    if(!minimum)  m_pMinimizeButton->hide();
 }
 
 void TitleBar::setMaximumVisible(bool maximum)
 {
-    if (!maximum) m_pMaximizeButton->hide();
+    if(!maximum) m_pMaximizeButton->hide();
 }
 
 void TitleBar::setMaximizeDisabled()
@@ -113,13 +113,11 @@ void TitleBar::mouseDoubleClickEvent(QMouseEvent *event)
 
 bool TitleBar::eventFilter(QObject *obj, QEvent *event)
 {
-    switch (event->type())
-    {
+    switch(event->type()) {
     case QEvent::WindowTitleChange:
     {
         QWidget *pWidget = qobject_cast<QWidget *>(obj);
-        if (pWidget)
-        {
+        if(pWidget) {
             m_pTitleLabel->setText(pWidget->windowTitle());
             return true;
         }
@@ -127,8 +125,7 @@ bool TitleBar::eventFilter(QObject *obj, QEvent *event)
     case QEvent::WindowIconChange:
     {
         QWidget *pWidget = qobject_cast<QWidget *>(obj);
-        if (pWidget)
-        {
+        if(pWidget) {
             QIcon icon = pWidget->windowIcon();
             m_pIconLabel->setPixmap(icon.pixmap(m_pIconLabel->size()));
             return true;
@@ -148,28 +145,19 @@ void TitleBar::onClicked()
 {
     QPushButton *pButton = qobject_cast<QPushButton *>(sender());
     QWidget *pWindow = this->window();
-    if (pWindow->isTopLevel())
-    {
-        if (pButton == m_pMinimizeButton)
-        {
+    if(pWindow->isTopLevel()) {
+        if(pButton == m_pMinimizeButton) {
             pWindow->showMinimized();
-        }
-        else if (pButton == m_pMaximizeButton)
-        {
-            if(pWindow->isMaximized())
-            {
+        } else if(pButton == m_pMaximizeButton) {
+            if(pWindow->isMaximized()) {
                 pWindow->showNormal();
                 m_pMaximizeButton->setPixmap(QPixmap(":/images/titlebar/max.png"));
-            }
-            else
-            {
+            } else {
                 pWindow->showMaximized();
                 window()->setGeometry(QApplication::desktop()->availableGeometry());
                 m_pMaximizeButton->setPixmap(QPixmap(":/images/titlebar/restore.png"));
             }
-        }
-        else if (pButton == m_pCloseButton)
-        {
+        } else if(pButton == m_pCloseButton) {
             pWindow->close();
         }
     }
@@ -178,16 +166,12 @@ void TitleBar::onClicked()
 void TitleBar::updateMaximize()
 {
     QWidget *pWindow = this->window();
-    if (pWindow->isTopLevel())
-    {
+    if(pWindow->isTopLevel()) {
         bool bMaximize = pWindow->isMaximized();
-        if (bMaximize)
-        {
+        if(bMaximize) {
             m_pMaximizeButton->setToolTip(tr("Restore"));
             m_pMaximizeButton->setProperty("maximizeProperty", "restore");
-        }
-        else
-        {
+        } else {
             m_pMaximizeButton->setProperty("maximizeProperty", "maximize");
             m_pMaximizeButton->setToolTip(tr("Maximize"));
         }

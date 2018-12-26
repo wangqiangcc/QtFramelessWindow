@@ -52,7 +52,7 @@ class FRAMELESSWINDOWSHARED_EXPORT FramelessMessageBox : public FramelessDialog
 
 public:
     FramelessMessageBox(QWidget *parent = nullptr, const QString &title = tr("Tip"), const QString &text = "",
-               QMessageBox::StandardButtons buttons = QMessageBox::Ok, QMessageBox::StandardButton defaultButton = QMessageBox::Ok);
+                        QMessageBox::StandardButtons buttons = QMessageBox::Ok, QMessageBox::StandardButton defaultButton = QMessageBox::Ok);
 
     ~FramelessMessageBox();
 
@@ -107,31 +107,31 @@ public:
     void addWidget(QWidget *pWidget);
 
     static QMessageBox::StandardButton showMessageBox(QWidget *parent, const QString &title,
-                                                      const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::Ok,
-                                                      IconType messageType = MSG_NOICON,
-                                                      QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
+            const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::Ok,
+            IconType messageType = MSG_NOICON,
+            QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
 
     static QMessageBox::StandardButton showInformation(QWidget *parent, const QString &title,
-                                                const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::Ok,
-                                                QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
+            const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::Ok,
+            QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
     static QMessageBox::StandardButton showError(QWidget *parent, const QString &title,
-                                                 const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::Ok,
-                                                 QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
+            const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::Ok,
+            QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
     static QMessageBox::StandardButton showSuccess(QWidget *parent, const QString &title,
-                                                   const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::Ok,
-                                                   QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
+            const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::Ok,
+            QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
     static QMessageBox::StandardButton showQuestion(QWidget *parent, const QString &title,
-                                             const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::Yes | QMessageBox::No,
-                                             QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
+            const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::Yes | QMessageBox::No,
+            QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
     static QMessageBox::StandardButton showWarning(QWidget *parent, const QString &title,
-                                                   const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::Ok,
-                                                   QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
+            const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::Ok,
+            QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
     static QMessageBox::StandardButton showCritical(QWidget *parent, const QString &title,
-                                                    const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::Ok,
-                                                    QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
+            const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::Ok,
+            QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
     static QMessageBox::StandardButton showCheckBoxQuestion(QWidget *parent, const QString &title,
-                                                            const QString &text, QMessageBox::StandardButtons buttons,
-                                                            QMessageBox::StandardButton defaultButton);
+            const QString &text, QMessageBox::StandardButtons buttons,
+            QMessageBox::StandardButton defaultButton);
 
 
 protected:

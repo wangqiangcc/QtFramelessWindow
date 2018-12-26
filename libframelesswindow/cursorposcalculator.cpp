@@ -47,10 +47,10 @@ void CursorPosCalculator::recalculate(const QPoint &gMousePos, const QRect &fram
     m_bOnRightEdge = (globalMouseX >= frameX + frameWidth - m_nBorderWidth &&
                       globalMouseX <= frameX + frameWidth);
     m_bOnTopEdge = (globalMouseY >= frameY &&
-                     globalMouseY <= frameY + m_nBorderWidth );
+                    globalMouseY <= frameY + m_nBorderWidth);
 
     m_bOnBottomEdge = (globalMouseY >= frameY + frameHeight - m_nBorderWidth &&
-                    globalMouseY <= frameY + frameHeight);
+                       globalMouseY <= frameY + frameHeight);
 
     m_bOnTopLeftEdge = m_bOnTopEdge && m_bOnLeftEdge;
     m_bOnBottomLeftEdge = m_bOnBottomEdge && m_bOnLeftEdge;

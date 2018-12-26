@@ -26,8 +26,7 @@ FramelessHelper::~FramelessHelper()
 {
     QList<QWidget*> keys = d->m_widgetDataHash.keys();
     int size = keys.size();
-    for (int i = 0; i < size; ++i)
-    {
+    for(int i = 0; i < size; ++i) {
         delete d->m_widgetDataHash.take(keys[i]);
     }
 
@@ -36,20 +35,18 @@ FramelessHelper::~FramelessHelper()
 
 void FramelessHelper::activateOn(QWidget *topLevelWidget)
 {
-    if (!d->m_widgetDataHash.contains(topLevelWidget))
-    {
-       WidgetData *data = new WidgetData(d, topLevelWidget);
-       d->m_widgetDataHash.insert(topLevelWidget, data);
+    if(!d->m_widgetDataHash.contains(topLevelWidget)) {
+        WidgetData *data = new WidgetData(d, topLevelWidget);
+        d->m_widgetDataHash.insert(topLevelWidget, data);
 
-       topLevelWidget->installEventFilter(this);
+        topLevelWidget->installEventFilter(this);
     }
 }
 
 void FramelessHelper::removeFrom(QWidget *topLevelWidget)
 {
     WidgetData *data = d->m_widgetDataHash.take(topLevelWidget);
-    if (data)
-    {
+    if(data) {
         topLevelWidget->removeEventFilter(this);
         delete data;
     }
@@ -69,8 +66,7 @@ void FramelessHelper::setRubberBandOnMove(bool movable)
 {
     d->m_bRubberBandOnMove = movable;
     QList<WidgetData*> list = d->m_widgetDataHash.values();
-    foreach (WidgetData *data, list)
-    {
+    foreach(WidgetData *data, list) {
         data->updateRubberBandStatus();
     }
 }
@@ -79,24 +75,21 @@ void FramelessHelper::setRubberBandOnResize(bool resizable)
 {
     d->m_bRubberBandOnResize = resizable;
     QList<WidgetData*> list = d->m_widgetDataHash.values();
-    foreach (WidgetData *data, list)
-    {
+    foreach(WidgetData *data, list) {
         data->updateRubberBandStatus();
     }
 }
 
 void FramelessHelper::setBorderWidth(uint width)
 {
-    if (width > 0)
-    {
+    if(width > 0) {
         CursorPosCalculator::m_nBorderWidth = width;
     }
 }
 
 void FramelessHelper::setTitleHeight(uint height)
 {
-    if (height > 0)
-    {
+    if(height > 0) {
         CursorPosCalculator::m_nTitleHeight = height;
     }
 }
@@ -133,7 +126,7 @@ uint FramelessHelper::titleHeight() const
 
 bool FramelessHelper::eventFilter(QObject *watched, QEvent *event)
 {
-    switch (event->type()) {
+    switch(event->type()) {
     case QEvent::MouseMove:
     case QEvent::HoverMove:
     case QEvent::MouseButtonPress:
@@ -141,8 +134,7 @@ bool FramelessHelper::eventFilter(QObject *watched, QEvent *event)
     case QEvent::Leave:
     {
         WidgetData *data = d->m_widgetDataHash.value(static_cast<QWidget *>(watched));
-        if (data)
-        {
+        if(data) {
             data->handleWidgetEvent(event);
             return true;
         }

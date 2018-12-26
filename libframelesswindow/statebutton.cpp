@@ -5,7 +5,7 @@
 #include <QStyle>
 
 StateButton::StateButton(QWidget *parent)
-	:QPushButton(parent)
+    :QPushButton(parent)
     ,m_status(NORMAL)
     ,m_mousePressed(false)
     ,m_pixmapType(NONE)
@@ -22,12 +22,12 @@ void StateButton::loadPixmap(const QString& pic_name, int state_count)
     m_pixmapType = FOREGROUND;
     m_pixmap.load(pic_name);
     m_stateCount = state_count;
-	m_width       = m_pixmap.width()/state_count;
-	m_height      = m_pixmap.height();
-	setFixedSize(m_width, m_height);
+    m_width       = m_pixmap.width()/state_count;
+    m_height      = m_pixmap.height();
+    setFixedSize(m_width, m_height);
 }
 
-void StateButton::setPixmap( const QPixmap& pixmap, int state_count )
+void StateButton::setPixmap(const QPixmap& pixmap, int state_count)
 {
     m_pixmapType = FOREGROUND;
     m_pixmap      = pixmap;
@@ -37,13 +37,13 @@ void StateButton::setPixmap( const QPixmap& pixmap, int state_count )
     setFixedSize(m_width, m_height);
 }
 
-void StateButton::loadBackground( const QString& pic_name, int state_count/*=4*/ )
+void StateButton::loadBackground(const QString& pic_name, int state_count/*=4*/)
 {
     loadPixmap(pic_name, state_count);
     m_pixmapType = BACKGROUND;
 }
 
-void StateButton::setBackground( const QPixmap& pixmap, int state_count/*=4*/ )
+void StateButton::setBackground(const QPixmap& pixmap, int state_count/*=4*/)
 {
     setPixmap(pixmap, state_count);
     m_pixmapType = BACKGROUND;
@@ -57,23 +57,21 @@ void StateButton::enterEvent(QEvent *e)
 
 void StateButton::mousePressEvent(QMouseEvent *event)
 {
-	if (event->button() == Qt::LeftButton) {
-		m_mousePressed = true;
-		m_status = PRESSED;
-		update();
-	}
+    if(event->button() == Qt::LeftButton) {
+        m_mousePressed = true;
+        m_status = PRESSED;
+        update();
+    }
 
     QPushButton::mousePressEvent(event);
 }
 
 void StateButton::mouseReleaseEvent(QMouseEvent *event)
 {
-	if (m_mousePressed)
-	{
+    if(m_mousePressed) {
         m_mousePressed = false;
-        
-        if (this->rect().contains(event->pos()))
-        {
+
+        if(this->rect().contains(event->pos())) {
             //if (isCheckable())
             //{
             //    setChecked(!isChecked());
@@ -81,40 +79,40 @@ void StateButton::mouseReleaseEvent(QMouseEvent *event)
             //emit clicked();
 
             m_status = HOVER;
-        }else{
+        } else {
             m_status = NORMAL;
         }
 
         update();
-	}
+    }
 
     QPushButton::mouseReleaseEvent(event);
 }
 
 void StateButton::leaveEvent(QEvent *e)
 {
-	m_status = NORMAL;
-	update();
+    m_status = NORMAL;
+    update();
     QPushButton::leaveEvent(e);
 }
 
 void StateButton::paintEvent(QPaintEvent *e)
 {
-    if (m_pixmapType == BACKGROUND) {
+    if(m_pixmapType == BACKGROUND) {
         paint_pixmap();
     }
 
-   // QPushButton::paintEvent(e);
+    // QPushButton::paintEvent(e);
     QStylePainter p(this);
     QStyleOptionButton option;
     initStyleOption(&option);
-    if (option.state & QStyle::State_HasFocus) {
+    if(option.state & QStyle::State_HasFocus) {
         option.state ^= QStyle::State_HasFocus;    //去除焦点框
         option.state |= QStyle::State_MouseOver;
     }
     p.drawControl(QStyle::CE_PushButton, option);
 
-    if (m_pixmapType == FOREGROUND) {
+    if(m_pixmapType == FOREGROUND) {
         paint_pixmap();
     }
 }
@@ -125,18 +123,17 @@ void StateButton::paint_pixmap()
 
     //根据状态显示图片
     ButtonStatus status = m_status;
-    if (!isEnabled()) {
+    if(!isEnabled()) {
         status = DISABLED;
-    }
-    else if (isChecked()) {
+    } else if(isChecked()) {
         status = CHECKED;
         //没有checked图片，用hover代替
-        if (status >= m_stateCount) {
+        if(status >= m_stateCount) {
             status = HOVER;
         }
     }
 
-    if (status >= m_stateCount) {
+    if(status >= m_stateCount) {
         status = NORMAL;
     }
 
@@ -145,7 +142,7 @@ void StateButton::paint_pixmap()
 //////////////////////////////////////////////////////////////////////////
 
 
-IconTextButton::IconTextButton( QWidget *parent )
+IconTextButton::IconTextButton(QWidget *parent)
     :QPushButton(parent)
 {
 }
@@ -154,7 +151,7 @@ IconTextButton::~IconTextButton()
 {
 }
 
-void IconTextButton::paintEvent( QPaintEvent *e )
+void IconTextButton::paintEvent(QPaintEvent *e)
 {
     QStyleOptionButton opt;
     initStyleOption(&opt);
@@ -186,8 +183,8 @@ void IconTextButton::paintEvent( QPaintEvent *e )
 TextButton::TextButton(QWidget *parent)
     :QPushButton(parent)
 {
-    this->setFlat( true );
-    this->setStyleSheet("QPushButton{background: transparent;}" );
+    this->setFlat(true);
+    this->setStyleSheet("QPushButton{background: transparent;}");
 }
 
 TextButton::~TextButton()

@@ -10,7 +10,7 @@
 //this button does not draw focus rect
 class StateButton : public QPushButton
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
     explicit StateButton(QWidget *parent = 0);
     ~StateButton();
@@ -23,18 +23,18 @@ public:
     void setBackground(const QPixmap& pixmap, int state_count=4);
 
 protected:
-	void enterEvent(QEvent *);
-	void leaveEvent(QEvent *);
-	void mousePressEvent(QMouseEvent *event);
-	void mouseReleaseEvent(QMouseEvent *event);
-	void paintEvent(QPaintEvent *);
+    void enterEvent(QEvent *);
+    void leaveEvent(QEvent *);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void paintEvent(QPaintEvent *);
 
 private:
     void paint_pixmap();
 
 private:
-	//枚举按钮的几种状态
-	enum ButtonStatus {NORMAL, HOVER, PRESSED, DISABLED, CHECKED};
+    //枚举按钮的几种状态
+    enum ButtonStatus {NORMAL, HOVER, PRESSED, DISABLED, CHECKED};
     //pximap_位图类型, 仅能选择其一. 如果两者都需要，请选择BACKGROUND + QPushButton::setIcon
     enum PixmapType   {NONE, FOREGROUND, BACKGROUND};
 
