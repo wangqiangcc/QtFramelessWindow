@@ -1,12 +1,6 @@
 # QtFramelessWindow
 Custom frameless window,dialog,messagebox  Library / 自定义无边框窗体，对话框和提示框，并封装成库
 
-参考了 FlyWM_ 添加了边框阴影
-GitHub: https://github.com/FlyWM
-CSDN: https://blog.csdn.net/a844651990
-
-
-
 ![image](https://raw.githubusercontent.com/dnybz/QtFramelessWindow/master/preview_1.png)
  
 使用方法：
@@ -39,4 +33,3 @@ int main(int argc, char *argv[])
     return a.exec();
 }
 ```
-
